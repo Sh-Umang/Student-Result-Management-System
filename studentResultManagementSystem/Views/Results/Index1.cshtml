@@ -1,0 +1,76 @@
+﻿@model IEnumerable<StudentResultManagementSystem.Models.Result>
+
+@{
+    var style = "";
+    if (ViewBag.Count == 1)
+    {
+        style = "disabled";
+    }
+}
+
+<div>
+    <h1 class="text-primary mb-3">Result</h1>
+
+    <p>
+        <a asp-action="Create" asp-route-id = "@ViewBag.id" class="btn btn-primary @style">Add Subject</a>
+    </p>
+    <hr/>
+    <div >
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        Subject ID
+                    </th>
+                    <th>
+                        Theory Marks
+                    </th>
+                    <th>
+                        Assignment Marks
+                    </th>
+                    <th>
+                        Practical Marks
+                    </th>
+                    <th>
+                        Total
+                    </th>
+                    <th>
+                        Result Obtained
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.sub_id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.theory_marks)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.assignment_marks)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.practical_marks)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.total)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.result_obt)
+                        </td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                @Html.ActionLink("Edit", "Edit", new { id = item.std_id, id1 = item.sub_id }, new { @class = "btn btn-primary btn-sm" })
+                                @Html.ActionLink("Delete", "Delete", new { id = item.std_id, id1 = item.sub_id }, new { @class = "btn btn-danger btn-sm" })
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

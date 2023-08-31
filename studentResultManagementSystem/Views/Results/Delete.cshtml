@@ -1,0 +1,81 @@
+﻿@model StudentResultManagementSystem.Models.Result
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<div>
+    <h3 class="text-danger">Are you sure you want to delete this?</h3>
+    <div class="col-md-6">
+        <h4>Result</h4>
+        <hr />
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.std_id)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.std_id)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.sub_id)
+                </th>
+                <td >
+                    @Html.DisplayFor(model => model.sub_id)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.theory_marks)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.theory_marks)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.assignment_marks)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.assignment_marks)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.practical_marks)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.practical_marks)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.total)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.total)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.result_obt)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.result_obt)
+                </td>
+            </tr>
+        </table>
+
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="std_id" />
+            <input type="hidden" asp-for="sub_id" />
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </form>
+    </div>
+</div>

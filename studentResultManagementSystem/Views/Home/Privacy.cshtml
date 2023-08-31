@@ -1,0 +1,79 @@
+﻿@model studentResultManagementSystem.ViewModels.StudentAndResult
+@using StudentResultManagementSystem.Models;
+
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<section class="mb-5">
+    <div class="container">
+        <h1 class="mb-3">Student Information</h1>
+        <table class="table table-bordered table-striped">
+            <tbody>
+                <tr>
+                    <td><strong>Symbol Number:</strong> @Html.DisplayFor(model => model.student.symbol_no)</td>
+                    <td><strong>Name:</strong> @Html.DisplayFor(model => model.student.first_name) @Html.DisplayFor(model => model.student.last_name)</td>
+                    <td><strong>Email:</strong> @Html.DisplayFor(model => model.student.email)</td>
+                </tr>
+                <tr>
+                    <td><strong>Address:</strong> @Html.DisplayFor(model => model.student.address)</td>
+                    <td><strong>Phone Number:</strong> @Html.DisplayFor(model => model.student.phone_no)</td>
+                    <td><strong>Gender:</strong> @Html.DisplayFor(model => model.student.gender)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+@if(Model.result.Count != Model.subject.Count)
+{
+    <h1 class="text-center text secondary">Result coming soon..</h1>
+}
+else
+{
+    <section>
+        <div class="container">
+            <table class="table table-bordered table-striped">
+                <tbody>
+                    <tr>
+                        <th>Course ID</th>
+                        <th>Course Name</th>
+                        <th>Theory Marks</th>
+                        <th>Practical Marks</th>
+                        <th>Internal Marks</th>
+                        <th>Total</th>
+                    </tr>
+                    @foreach (var c in Model.result)
+                    {
+                        var d = Model.subject;
+                        Subject sub = d.Find(e => e.subject_id == c.sub_id); 
+                        var tr = c.result_obt == "Fail" ? "background-color:red" : "";
+                        <tr style="@tr">
+                            <td>@Html.DisplayFor(model =>c.sub_id)</td>
+                            <td>@sub.subject_name</td>
+                            <td>@Html.DisplayFor(model =>c.theory_marks)</td>
+                            <td>@Html.DisplayFor(model =>c.practical_marks)</td>
+                            <td>@Html.DisplayFor(model =>c.assignment_marks)</td>
+                            <td>@Html.DisplayFor(model =>c.total)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="col-md-3 offset-md-9">
+                <table class="table table-bordered table-striped">
+                    <tbody>
+                        <tr>
+                            <td><strong>Overall Result: </strong>@ViewBag.Total</td>
+                        </tr>
+                        @if (ViewBag.Total == "Pass")
+                        {
+                            <tr>
+                                <td><strong>Percent: </strong>@ViewBag.Percent</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+    </section>
+}

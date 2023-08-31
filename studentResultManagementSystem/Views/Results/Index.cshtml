@@ -1,0 +1,26 @@
+﻿@model IEnumerable<StudentResultManagementSystem.Record>
+
+<h1 class="mb-3 text-primary text-center">Results</h1>
+
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Overall Result</th>
+                <th>Percentage</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.overall_result)</td>
+                    <td>@Html.DisplayFor(modelItem => item.percent)</td>
+                    <td>@Html.ActionLink("Edit", "Index1", new { id = item.id }, new { @class = "btn btn-primary" })</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+

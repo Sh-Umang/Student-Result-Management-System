@@ -1,0 +1,39 @@
+﻿@model StudentResultManagementSystem.Models.Subject
+
+<h1 class="text-primary">Create</h1>
+
+<h4>Subject Information:</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @if (ViewBag.ErrorMsg != "")
+        {
+            <span>@ViewBag.ErrorMsg</span>
+        }
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="subject_id" class="control-label"></label>
+                <input asp-for="subject_id" class="form-control" />
+                <span asp-validation-for="subject_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="subject_name" class="control-label"></label>
+                <input asp-for="subject_name" class="form-control" />
+                <span asp-validation-for="subject_name" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <input type="submit" value="Create" class="btn btn-primary" /> |  
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="mt-1">
+    
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

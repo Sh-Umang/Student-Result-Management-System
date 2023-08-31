@@ -1,0 +1,26 @@
+﻿@model StudentResultManagementSystem.Models.Subject
+
+<h1>Delete</h1>
+
+<h3 class="text-danger">Are you sure you want to delete this?</h3>
+<div class=" col-md-6">
+    <h4>Subject Information:</h4>
+    <hr />
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.subject_name)
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.subject_name)
+            </td>
+        </tr>
+    </table>
+
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="subject_id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </form>
+</div>
